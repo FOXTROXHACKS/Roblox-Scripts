@@ -1,0 +1,51 @@
+--[[ settings
+_G.Enabled = true --turn on/off the autofarm
+SafePlatform = true -- this will teleport you ontop of a platform to stay afk
+WAIT = 5
+]]
+--[[	locals		]]--
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/UsefullScripts/main/SpawnPlat.lua"))() --usage: SpawnPlatform(Position)
+local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/UsefullScripts/main/Notif"))()-- notification  system ofc
+local WS = game:GetService("Workspace")
+local LP = game:GetService("Players").LocalPlayer
+local SafePlace = Vector3.new(431, -121.5, 36)
+
+function GetCoins()
+    for i, v in pairs(WS.GameObjects:GetDescendants()) do
+        if v:IsA("TouchTransmitter") and v.Parent.Name == "Credit" then
+            coin = v.Parent
+            coin.CFrame = LP.Character.HumanoidRootPart.CFrame
+        end
+    end
+end
+
+spawn(function()
+	if SafePlatform then
+		SpawnPlatform(SafePlace)
+	end
+end)
+
+spawn(function()
+	SpawnPlatform(SafePlace)
+end)
+spawn(function()
+	notify("Loaded Autofarm, Made by Al3xander#3748", 10, 0.02)
+end)
+
+spawn(function()
+	while _G.Enabled do
+		wait(WAIT)
+		for i,v in pairs(LP.Character:GetChildren()) do
+			if v.Name == "HumanoidRootPart" then
+				spawn(function()
+					GetCoins()
+				end)
+				if SafePlatform then
+					spawn(function()
+						LP.Character.HumanoidRootPart.CFrame = CFrame.new(431, -118, 36)
+					end)
+				end
+			end
+		end
+	end
+end)
