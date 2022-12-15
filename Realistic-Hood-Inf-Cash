@@ -1,24 +1,23 @@
 --[[
-Made by: Al3xander
-Any doubts feel free to dm me [Al3xander#3748]
-]]--
-_G.Enabled = true --false to toggle it off
---[[
       Made by: Al3xander#3748, imma obfuscate it as soon as moonsec is back ig, or dm me to donate so i can get a paid obfuscator
 ]]--
-local version = 1.2
+local version = 1.3
 local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/UsefullScripts/main/Notif"))()
 local WS = game:GetService("Workspace")
 local LP = game:GetService("Players").LocalPlayer
 
 function GetCash()
-    for i, v in pairs(WS:GetDescendants()) do
-        if _G.Enabled and v:IsA("TouchTransmitter") and v.Parent.Name == "sCash" then
-            moni = v.Parent
-            moni.CanCollide = false
-            moni.Transparency = 1
-            moni.Tag.Enabled = false
-            moni.CFrame = LP.Character.HumanoidRootPart.CFrame
+    for i,v in pairs(LP.Character:GetChildren()) do
+        if v.Name == "HumanoidRootPart" then
+            for i, v in pairs(WS:GetDescendants()) do
+                if _G.Enabled and v:IsA("TouchTransmitter") and v.Parent.Name == "sCash" then
+                    moni = v.Parent
+                    moni.CanCollide = false
+                    moni.Transparency = 1
+                    moni.Tag.Enabled = false
+                    moni.CFrame = LP.Character.HumanoidRootPart.CFrame
+                end
+            end
         end
     end
 end
@@ -33,7 +32,7 @@ end
 
 spawn(function()
     notify("Loaded, Made by Al3xander#3748", 10, 0.02)
-    notify("V:"..version.." -Fixed Reg Opening for autofarm.",10,0.02)
+    notify("v"..version.." - Fixed Reg Opening for autofarm & fixed the cash grab from breaking when you die.",10,0.02)
 end)
 
 spawn(function()
