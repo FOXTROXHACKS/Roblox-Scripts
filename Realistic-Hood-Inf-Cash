@@ -1,4 +1,9 @@
 --[[
+Made by: Al3xander
+Any doubts feel free to dm me [Al3xander#3748]
+]]--
+_G.Enabled = true --false to toggle it off
+--[[
       Made by: Al3xander#3748, imma obfuscate it as soon as moonsec is back ig, or dm me to donate so i can get a paid obfuscator
 ]]--
 local version = 1.2
@@ -28,7 +33,7 @@ end
 
 spawn(function()
     notify("Loaded, Made by Al3xander#3748", 10, 0.02)
-    notify(version.."Fixed Reg Opening for autofarm.",10,0.02)
+    notify("V:"..version.." -Fixed Reg Opening for autofarm.",10,0.02)
 end)
 
 spawn(function()
