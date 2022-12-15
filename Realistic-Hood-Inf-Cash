@@ -1,6 +1,7 @@
 --[[
       Made by: Al3xander#3748, imma obfuscate it as soon as moonsec is back ig, or dm me to donate so i can get a paid obfuscator
 ]]--
+local version = 1.2
 local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/UsefullScripts/main/Notif"))()
 local WS = game:GetService("Workspace")
 local LP = game:GetService("Players").LocalPlayer
@@ -20,18 +21,25 @@ end
 function RegOpen()
    for i,v in pairs(WS:GetDescendants()) do
        if _G.Enabled and v.Name == "ProximityPrompt" and v.Parent.Name == "register" then
-            wait(1)
             fireproximityprompt(v)
        end
     end 
 end
+
 spawn(function()
     notify("Loaded, Made by Al3xander#3748", 10, 0.02)
+    notify(version.."Fixed Reg Opening for autofarm.",10,0.02)
 end)
 
 spawn(function()
     while _G.Enabled do
-        wait(0.5)
         GetCash()
+        wait(0.5)
+    end
+end)
+spawn(function()
+    while _G.Enabled do
+        RegOpen()
+        wait(1)
     end
 end)
